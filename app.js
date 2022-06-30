@@ -1,5 +1,7 @@
 'use strict';
 
+let scrollContent = window.scrollY + 500;
+
 const staticImg="./images/mimo_home_static.png";
 const gifImg ="./images/mimo_home.gif";
 
@@ -42,12 +44,12 @@ const observer = new IntersectionObserver(observerCallback, observerOptions);
 sectionH3.forEach((el) => { observer.observe(el);})
 
 const barList = document.querySelectorAll('.skill')
-const skillSection = document.querySelector('.skills')
-const skillHeight = skillSection.getBoundingClientRect().bottom
+const skillSection = document.querySelector('.skills__container')
+const skillHeight = window.scrollY + skillSection.getBoundingClientRect().top
 
 document.addEventListener('scroll', function() {
     barList.forEach(bar => {
-        if(window.scrollY > skillHeight) {
+        if(window.scrollY + 600 >= skillHeight) {
             bar.classList.add('active')
         } else {
             bar.classList.remove('active');
